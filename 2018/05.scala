@@ -1,7 +1,7 @@
 import scala.collection.immutable.ListMap
 import scala.io.Source
 
-object Solve04 {
+object Solve05 {
   def main(args: Array[String]) {
     var initial_polymer = Source.fromFile("05.in").mkString
 
