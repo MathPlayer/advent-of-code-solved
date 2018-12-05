@@ -1,11 +1,6 @@
 import scala.collection.immutable.ListMap
 import scala.io.Source
 
-object EventType extends Enumeration {
-  type EventType = Value
-  val Awake, Sleep, GuardChange = Value
-}
-
 object Solve04 {
   def main(args: Array[String]) {
     val lines = Source.fromFile("04.in").mkString.split("\n")
@@ -18,14 +13,14 @@ object Solve04 {
       }
     }
     val sorted_events = ListMap(raw_events.toSeq.sortBy(_._1):_*)
-    // Acc is ((guard_id, (minute, sleep_count)), current_guard, last_sleep)
     val (sleep_count, _, _) = sorted_events.foldLeft((Map.empty[Int, Map[Int, Int]], -1, -1)) {
+      // acc is ((guard_id, (minute, sleep_count)), current_guard, last_sleep)
       (acc, entry) => {
-        var (data, current_guard, current_minute) = acc
-        var ((month, day, hour, minute), words) = entry
+        val (data, current_guard, current_minute) = acc
+        val ((month, day, hour, minute), words) = entry
 
         if (words(0) == "Guard") {
-          var guard = words(1).drop(1).toInt
+          val guard = words(1).drop(1).toInt
           if (data.contains(guard)) {
             (data, guard, -1)
           } else {
@@ -33,9 +28,8 @@ object Solve04 {
           }
         } else if (words(0) == "falls") {
           (data, current_guard, minute)
-        } else {
-          // waking up
-          var times = data(current_guard)
+        } else { // waking up
+          val times = data(current_guard)
           (data +
             (current_guard -> times.foldLeft(Map.empty[Int, Int]) {
               (macc, mcount) =>
