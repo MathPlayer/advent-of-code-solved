@@ -1,4 +1,3 @@
-import scala.collection.immutable.ListMap
 import scala.io.Source
 
 object Solve05 {
