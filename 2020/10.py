@@ -2,16 +2,14 @@
 
 import sys
 
-from itertools import combinations
-
 def read(in_file):
-    ''' Reads data for day 09. '''
+    ''' Reads data for day 10. '''
     with open(in_file) as f:
         data = tuple(map(lambda x: int(x.strip()), f.readlines()))
     return data
 
 
-def solve(in_file,):
+def solve(in_file):
     ''' Solves day 10. '''
     print(in_file)
     data = read(in_file)
