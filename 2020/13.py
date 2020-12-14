@@ -95,14 +95,14 @@ def solve(in_file, guess=None):
     ''' Solves day 13. '''
     print(in_file)
     data = read(in_file)
-    # solve_1(data)
+    solve_1(data)
     solve_2(data, guess)
 
 
 if __name__ == '__main__':
     solve('13test.in')
-    # solve_2([[], ['17', 'x', '13', '19']])
-    # solve_2([[], ['67', '7', '59', '61']])
-    solve('13.in', 100000000000000)
+    solve_2([[], '17,x,13,19'.split(',')])
+    solve_2([[], '67,7,59,61'.split(',')])
+    # solve('13.in', 100000000000000)
 
     sys.exit(0)
