@@ -55,8 +55,9 @@ def solve_1(data):
 def solve_2(data, invalid_tickets):
     ''' Determines the name order on the ticket and computes the product of the numbers on our ticket for the fields
     starting their name with 'departure'. '''
-    # Determine matches for all indices.
     conditions, our_ticket, nearby = data
+
+    # Determine matches for all indices.
     matches = [set(conditions.keys()) for _ in conditions]
     for ticket in nearby - invalid_tickets:
         for index, number in enumerate(ticket):
