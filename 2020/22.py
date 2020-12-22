@@ -55,7 +55,7 @@ def recursive_combat(p1, p2):
 
 def score(winner):
     ''' Prints the winner's score. '''
-    print(sum(map(lambda x: (x[0] + 1) * x[1], enumerate(reversed(winner)))))
+    print(sum(map(lambda x: x[0] * x[1], enumerate(reversed(winner), 1))))
 
 
 def solve(in_file):
