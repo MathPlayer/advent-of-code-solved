@@ -1,0 +1,20 @@
+= Advent of code 2021
+:source-highlighter: rouge
+
+To make the boilerplate simpler, I decided to start using https://github.com/jakzo/aoc.
+
+Useful commands:
+
+- Install in a local `./node_modules` directory (I prefer local installation to not alter any global packages):
+
+ npm install @jakzo/aoc
+
+- Create and run (on file change) the wip for day X (defaults to current day if day is not provided):
+
+ ./node_modules/.bin/aoc start python
+ ./node_modules/.bin/aoc start python --day X
+
+- Start/solve day X (defaults to current day if day is not provided):
+
+ ./node_modules/.bin/aoc
+ ./node_modules/.bin/aoc --day X
