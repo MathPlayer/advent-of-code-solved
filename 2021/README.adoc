@@ -8,6 +8,7 @@ Useful commands:
 - Install in a local `./node_modules` directory (I prefer local installation to not alter any global packages):
 
  npm install @jakzo/aoc
+ npm install            # uses the package.json config; not updated frequently, use at your own risk.
 
 - Create and run (on file change) the wip for day X (defaults to current day if day is not provided):
 
