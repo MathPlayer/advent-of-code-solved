@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@jakzo/aoc": "^1.0.12"
+  }
+}
