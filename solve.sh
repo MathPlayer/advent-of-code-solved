@@ -24,7 +24,7 @@ parse_cli() {
   # Parse year and day from CLI arguments.
   YEAR="$(date '+%Y')"
   DAY="$(date '+%d')"
-  SKIP_PART_1="false"
+  RUN_PART_1=true
   while getopts ":y:d:sh" opt; do
     case $opt in
       y)
@@ -34,7 +34,7 @@ parse_cli() {
         DAY=$(printf '%02d' "$OPTARG")
         ;;
       s)
-        SKIP_PART_1="true"
+        RUN_PART_1=false
         ;;
       h)
         echo "$USAGE"
@@ -60,34 +60,35 @@ parse_cli() {
 # Uses variables ROOT_DIR, YEAR and DAY.
 solve() {
   part=$1
-  part_dir="$ROOT_DIR/$YEAR/$DAY/part-$part"
-  echo ">>> Running on $part_dir"
+  solve_dir="$ROOT_DIR/$YEAR/$DAY"
+  echo ">>> Running on $solve_dir for part $part"
 
-  mkdir -p "${part_dir}"
-  pushd "$part_dir" || (echo >&2 "Cannot cd into $part_dir" && exit 1)
+  mkdir -p "${solve_dir}"
+  pushd "$solve_dir" || (echo >&2 "Cannot cd into $solve_dir" && exit 1)
 
   aoc download -y "${YEAR}" --day "${DAY}" --overwrite
-  glow "$part_dir/puzzle.md"
+  glow "$solve_dir/puzzle.md"
   while true; do
     date -R
     read -r -p ">>> Enter your answer: " answer
     date -R
-    echo ">>> Submitting answer"
+    echo ">>> Submitting answer..."
     output=$(aoc submit -y "$YEAR" -d "$DAY" "$part" "$answer" | tee "/dev/tty")
     if [[ "$output" == *"$CORRECT_TEXT"* ]]; then
       echo ">>> Success: The answer is correct."
+      break
     else
       echo ">>> Error or Incorrect Answer."
     fi
   done
-  popd || (echo >&2 "Cannot cd from $part_dir" && exit 1)
+  popd || (echo >&2 "Cannot cd from $solve_dir" && exit 1)
 }
 
 
 ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 CORRECT_TEXT="That's the right answer"
 parse_cli "$@"
-if [[ ! $SKIP_PART_1 ]]; then
+if [[ $RUN_PART_1 == true ]]; then
   solve 1
 fi
 solve 2
