@@ -1,7 +1,11 @@
+# Environment setup.
 venv/
+node_modules/
+
+# Partial solutions.
 wip*.py
 
-# Ignore puzzle and input/response files
+# Puzzle and input/response files.
 *.md
 input*
 test*
