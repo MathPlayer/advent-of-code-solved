@@ -1,2 +1,9 @@
 venv/
-wip.py
+wip*.py
+
+# Ignore puzzle and input/response files
+*.md
+input*
+test*
+*.in
+*.out
