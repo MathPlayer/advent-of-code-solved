@@ -5,8 +5,8 @@
 # TODO: create template files for part 1 and part 2.
 
 USAGE="Enables interactive solving for one day of AoC:
-1. create a ./<year>/<day>/ directory.
-2. Run for part X (first 1, then 2):
+1. Creates a ./<year>/<day>/ directory.
+2. Runs for part X (first 1, then 2):
    a. Download the puzzle description and input.
    b. Wait for an answer to try out.
    c. Submit the answer.
@@ -17,7 +17,7 @@ Usage: ./solve.sh [-y <YEAR>] [-d <DAY>] [-s]
 Options:
   -y <YEAR> - Specifies the year to solve. Defaults to the current year.
   -d <DAY>  - Specifies the day to solve. Defaults to the current day.
-  -s        - Skips parts one for the given year/day.
+  -s        - Skips part one for the given year/day.
  "
 
 parse_cli() {
