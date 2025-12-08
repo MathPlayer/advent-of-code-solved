@@ -8,7 +8,7 @@
 #
 
 execute_python_file() {
-  echo ">>> Starting new run ..."
+  echo ">>>>>>>>>> Starting new run ..."
   pushd "$(dirname "$1")" >/dev/null || exit
   time -- python3 "$(basename "$1")" &
   popd >/dev/null || exit
